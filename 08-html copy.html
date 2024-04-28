@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>人物生成器</title>
 </head>
+
 <body>
     <h1>人物生成器</h1>
     <button onclick="generateCharacter()">生成人物</button>
     <div id="character-info"></div>
 
-    <script src="character-generator.js"></script>
+    <script>
+        function generateCharacter() {
+            // 预定义的属性选项
+            const names = ["高阳", "王子凯", "初雪", "黄警官", "罐头"];
+            const abilities = ["速度", "力量", "隐形", "心灵感应", "飞行"];
+            const personalities = ["勇敢", "机智", "善良", "幽默", "严肃"];
+            const likes = ["阅读", "运动", "音乐", "旅行", "绘画"];
+
+            // 随机选择每个属性
+            const character = {
+                name: randomChoice(names),
+                ability: randomChoice(abilities),
+                personality: randomChoice(personalities),
+                like: randomChoice(likes)
+            };
+
+            // 显示生成的人物信息
+            document.getElementById('character-info').innerText =
+                `姓名：${character.name}\n` +
+                `异能：${character.ability}\n` +
+                `性格：${character.personality}\n` +
+                `喜好：${character.like}`;
+        }
+
+        // 辅助函数，用于从数组中随机选择一个元素
+        function randomChoice(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        // 默认生成一个人物
+        generateCharacter();
+    </script>
 </body>
+
 </html>
-function generateCharacter() {
-  // 预定义的属性选项
-  const names = ["高阳", "王子凯", "初雪", "黄警官", "罐头"];
-  const abilities = ["速度", "力量", "隐形", "心灵感应", "飞行"];
-  const personalities = ["勇敢", "机智", "善良", "幽默", "严肃"];
-  const likes = ["阅读", "运动", "音乐", "旅行", "绘画"];
-
-  // 随机选择每个属性
-  const character = {
-      name: randomChoice(names),
-      ability: randomChoice(abilities),
-      personality: randomChoice(personalities),
-      like: randomChoice(likes)
-  };
-
-  // 显示生成的人物信息
-  document.getElementById('character-info').innerText =
-      `姓名：${character.name}\n` +
-      `异能：${character.ability}\n` +
-      `性格：${character.personality}\n` +
-      `喜好：${character.like}`;
-}
-
-// 辅助函数，用于从数组中随机选择一个元素
-function randomChoice(array) {
-  return array[Math.floor(Math.random() * array.length)];
-}
-
-// 默认生成一个人物
-generateCharacter();
-
